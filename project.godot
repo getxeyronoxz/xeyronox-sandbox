@@ -7,6 +7,7 @@ config_version=5
 [application]
 
 config/name="Xeyronox Sandbox"
+config/icon="res://icon.svg"
 run/main_scene="res://scenes/ui/main_menu.tscn"
 config/features=PackedStringArray("4.7")
 
@@ -22,6 +23,7 @@ window/handheld/orientation=1
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
 
 [input]
 
