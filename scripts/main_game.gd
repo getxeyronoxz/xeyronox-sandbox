@@ -33,7 +33,7 @@ func _process(_delta: float) -> void:
 		return
 	if vehicle:
 		var speed := vehicle.linear_velocity.length()
-		speed_label.text = "Speed: %d" % int(speed * 3.6)  # m/s -> km/h approx
+		speed_label.text = "Speed: %d km/h  |  FPS: %d" % [int(speed * 3.6), Engine.get_frames_per_second()]
 
 func _ready() -> void:
 	pause_menu.visible = false
@@ -42,9 +42,10 @@ func _ready() -> void:
 	pause_menu.get_node("Panel/VBoxContainer/RestartButton").pressed.connect(_on_restart)
 	pause_menu.get_node("Panel/VBoxContainer/MenuButton").pressed.connect(_on_menu)
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("pause"):
-		_toggle_pause()
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_APPLICATION_FOCUS_OUT:
+		if not get_tree().paused:
+			_toggle_pause()
 
 func _toggle_pause() -> void:
 	var paused := not get_tree().paused
