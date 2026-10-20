@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/vehicle_controller.gd" id="1_vctrl"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_body"]
+size = Vector3(2, 0.8, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape_body"]
+size = Vector3(2, 0.8, 4)
+
+[node name="Vehicle" type="VehicleBody3D"]
+mass = 800.0
+script = ExtResource("1_vctrl")
+
+[node name="BodyMesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_body")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape_body")
+
+[node name="WheelFL" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1.5)
+use_as_steering = true
+use_as_traction = true
+wheel_radius = 0.4
+
+[node name="WheelFR" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1.5)
+use_as_steering = true
+use_as_traction = true
+wheel_radius = 0.4
+
+[node name="WheelRL" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1.5)
+use_as_traction = true
+wheel_radius = 0.4
+
+[node name="WheelRR" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1.5)
+use_as_traction = true
+wheel_radius = 0.4

@@ -1,9 +1,14 @@
 # Xeyronox Sandbox
 
-Minimal project skeleton (Phase 3A). Open `project.godot` in Godot 4.7.2.
+Original low-poly 3D arcade driving sandbox. Godot 4.7.2, GDScript, Compatibility renderer.
 
-- Renderer: Compatibility (OpenGL)
-- Main scene: `scenes/main.tscn` (empty 3D scene, no gameplay)
-- Input actions are defined but not implemented.
+## Run
+Open `project.godot` in Godot 4.7.2 and run the main scene (menu).
 
-No vehicle, camera rig, UI, scripts, models, or assets have been added yet.
+## Status
+Vertical slice scaffolding in place: menu, pause, HUD, touch controls, settings, vehicle prototype (VehicleBody3D). See `docs/development_status.md`.
+
+## Notes
+- Offline-first, no monetization or multiplayer.
+- Android export not yet verified (templates missing).
+- No third-party assets.
