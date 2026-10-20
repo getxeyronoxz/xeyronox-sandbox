@@ -1,10 +1,16 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=7 format=3]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ground"]
 size = Vector3(200, 1, 200)
 
 [sub_resource type="BoxShape3D" id="BoxShape_ground"]
 size = Vector3(200, 1, 200)
+
+[sub_resource type="BoxMesh" id="BoxMesh_road"]
+size = Vector3(8, 1.1, 120)
+
+[sub_resource type="BoxShape3D" id="BoxShape_road"]
+size = Vector3(8, 1.1, 120)
 
 [sub_resource type="BoxMesh" id="BoxMesh_obstacle"]
 size = Vector3(2, 2, 2)
@@ -22,6 +28,15 @@ mesh = SubResource("BoxMesh_ground")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
 shape = SubResource("BoxShape_ground")
+
+[node name="Road" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Road"]
+mesh = SubResource("BoxMesh_road")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Road"]
+shape = SubResource("BoxShape_road")
 
 [node name="Obstacle1" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, -6)
